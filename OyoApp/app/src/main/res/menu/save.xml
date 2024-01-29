@@ -3,10 +3,10 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/btnScrapAt"
+        android:id="@+id/btnSave"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:icon="@drawable/bookmark_24px_color"
-        android:title="스크랩"
+        android:icon="@drawable/done"
+        android:title="저장"
         app:showAsAction="always" />
 </menu>

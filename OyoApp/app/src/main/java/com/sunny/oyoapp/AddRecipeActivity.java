@@ -8,21 +8,23 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
-public class ChatbotActivity extends AppCompatActivity {
+public class AddRecipeActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_chatbot);
+        setContentView(R.layout.activity_add_recipe);
 
-        getSupportActionBar().setTitle("레시피봇");
+        getSupportActionBar().setTitle("레시피 작성");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeAsUpIndicator(R.drawable.arrow_back_ios);
     }
 
+
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.main, menu);
+        getMenuInflater().inflate(R.menu.save, menu);
         return true;
     }
 
@@ -32,10 +34,9 @@ public class ChatbotActivity extends AppCompatActivity {
 
         int itemId = item.getItemId();
 
-        if(itemId == R.id.btnScrapAt){
+        if(itemId == R.id.btnSave){
 
-            Intent intent = new Intent(ChatbotActivity.this, ScarpActivity.class);
-            startActivity(intent);
+            // TODO: 레시피 저장하는 버튼 설정
         }
 
         return super.onOptionsItemSelected(item);

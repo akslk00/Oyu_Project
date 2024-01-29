@@ -2,28 +2,22 @@ package com.sunny.oyoapp;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
-import android.widget.TextView;
+import android.view.View;
 
-public class UserRecipeActivity extends AppCompatActivity {
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
-    TextView txtNickname;
+public class MyRecipeActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_user_recipe_all);
+        setContentView(R.layout.activity_my_recipe);
 
-        txtNickname = findViewById(R.id.txtNickname);
-
-        String nickname = txtNickname.getText().toString().trim();
-
-
-
-        getSupportActionBar().setTitle(nickname);
+        getSupportActionBar().setTitle("나의 레시피");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeAsUpIndicator(R.drawable.arrow_back_ios);
-
 
     }
 }

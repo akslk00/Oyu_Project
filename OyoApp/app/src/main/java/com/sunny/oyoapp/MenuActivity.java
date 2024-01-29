@@ -64,9 +64,20 @@ public class MenuActivity extends AppCompatActivity {
         btnUserRecipe.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MenuActivity.this, UserRecipeActivity.class);
+                Intent intent = new Intent(MenuActivity.this, UserRecipeAllActivity.class);
                 startActivity(intent);
             }
         });
+
+        btnMyRecipe.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MenuActivity.this, MyRecipeActivity.class);
+                startActivity(intent);
+
+            }
+        });
+
+
     }
 }

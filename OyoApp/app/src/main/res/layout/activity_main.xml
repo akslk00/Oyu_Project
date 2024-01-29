@@ -38,7 +38,7 @@
                     android:src="@drawable/main_bnr" />
 
                 <Button
-                    android:id="@+id/frame_8"
+                    android:id="@+id/btnAi"
                     android:layout_width="345dp"
                     android:layout_height="59dp"
                     android:layout_alignParentTop="false"
@@ -124,7 +124,7 @@
             android:padding="10dp">
 
             <LinearLayout
-                android:id="@+id/btnHome"
+                android:id="@+id/btnScrapAt"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
