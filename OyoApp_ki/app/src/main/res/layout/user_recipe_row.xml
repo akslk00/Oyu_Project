@@ -59,6 +59,7 @@
                         android:id="@+id/imageView15"
                         android:layout_width="20dp"
                         android:layout_height="match_parent"
+
                         android:textAlignment="textEnd"
                         app:srcCompat="@drawable/bookmark_18px" />
 
