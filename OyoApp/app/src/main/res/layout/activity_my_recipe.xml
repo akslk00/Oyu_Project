@@ -141,7 +141,7 @@
         </LinearLayout>
 
         <Button
-            android:id="@+id/btnFollow"
+            android:id="@+id/btnUpdatePrfile"
             android:layout_width="match_parent"
             android:layout_height="33dp"
             android:layout_marginLeft="24dp"

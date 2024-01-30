@@ -2,7 +2,9 @@ package com.sunny.oyoapp;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -14,6 +16,7 @@ import com.bumptech.glide.Glide;
 import com.kakao.sdk.auth.model.OAuthToken;
 import com.kakao.sdk.user.UserApiClient;
 import com.kakao.sdk.user.model.User;
+import com.sunny.oyoapp.config.Config;
 
 import kotlin.Unit;
 import kotlin.jvm.functions.Function2;
@@ -30,7 +33,7 @@ public class LoginActivity extends AppCompatActivity {
     Button btnGoogleLogin;
     Button btnRegister;
 
-//    카카오 로그인 API
+    //    카카오 로그인 API
     private static final String TAG = "LoginActivity";
 
 
@@ -69,35 +72,67 @@ public class LoginActivity extends AppCompatActivity {
         });
 
         // 카카오가 설치되어 있는지 확인 하는 메서드또한 카카오에서 제공 콜백 객체를 이용함
-        Function2<OAuthToken, Throwable, Unit> callback = new  Function2<OAuthToken, Throwable, Unit>() {
-            @Override
-            public Unit invoke(OAuthToken oAuthToken, Throwable throwable) {
-                // 이때 토큰이 전달이 되면 로그인이 성공한 것이고 토큰이 전달되지 않았다면 로그인 실패
-                if(oAuthToken != null) {
-                    // 로그인 성공 시 MainActivity로 화면 전환
-                    Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-                    startActivity(intent);
-                    finish(); // 현재 LoginActivity 종료
-
-                }
-                if (throwable != null) {
-                    // 로그인 실패 처리
-                    Log.e(TAG, "Kakao login failed", throwable);
-                    // 실패에 대한 처리 로직 추가
-
-                }
+//        Function2<OAuthToken, Throwable, Unit> callback = new  Function2<OAuthToken, Throwable, Unit>() {
+//            @Override
+//            public Unit invoke(OAuthToken oAuthToken, Throwable throwable) {
+//                // 이때 토큰이 전달이 되면 로그인이 성공한 것이고 토큰이 전달되지 않았다면 로그인 실패
+//                if(oAuthToken != null) {
+//                    // 로그인 성공 시 MainActivity로 화면 전환
+//                    Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+//                    startActivity(intent);
+//                    finish(); // 현재 LoginActivity 종료
+//
+//                }
+//                if (throwable != null) {
+//                    // 로그인 실패 처리
+//                    Log.e(TAG, "Kakao login failed", throwable);
+//                    // 실패에 대한 처리 로직 추가
+//
+//                }
 //                updateKakaoLoginUi();
-                return null;
-            }
-        };
+//                return null;
+//            }
+//        };
         btnKakaoLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                Function2<OAuthToken, Throwable, Unit> callback = new  Function2<OAuthToken, Throwable, Unit>() {
+                    @Override
+                    public Unit invoke(OAuthToken oAuthToken, Throwable throwable) {
+
+                        // 이때 토큰이 전달이 되면 로그인이 성공한 것이고 토큰이 전달되지 않았다면 로그인 실패
+                        if(oAuthToken != null) {
+                            SharedPreferences sp = getSharedPreferences(Config.PREFERENCE_NAME, MODE_PRIVATE);
+                            SharedPreferences.Editor editor = sp.edit();
+                            editor.putString("token", oAuthToken.getAccessToken());
+                            editor.apply();
+
+                            // 로그인 성공 시 MainActivity로 화면 전환
+                            Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                            startActivity(intent);
+                            finish(); // 현재 LoginActivity 종료
+
+                        }
+                        if (throwable != null) {
+                            // 로그인 실패 처리
+                            Log.e(TAG, "Kakao login failed", throwable);
+                            // 실패에 대한 처리 로직 추가
+
+                        }
+                        updateKakaoLoginUi();
+                        return null;
+                    }
+                };
+
                 if(UserApiClient.getInstance().isKakaoTalkLoginAvailable(LoginActivity.this)) {
                     UserApiClient.getInstance().loginWithKakaoTalk(LoginActivity.this, callback);
                 }else {
                     UserApiClient.getInstance().loginWithKakaoAccount(LoginActivity.this, callback);
                 }
+
+
+
 
             }
         });

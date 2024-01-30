@@ -78,6 +78,14 @@ public class MenuActivity extends AppCompatActivity {
             }
         });
 
+        btnUserInfo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MenuActivity.this, UpdateUserActivity.class);
+                startActivity(intent);
+            }
+        });
+
 
     }
 }
