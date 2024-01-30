@@ -38,7 +38,7 @@
             android:orientation="horizontal">
 
             <EditText
-                android:id="@+id/editEmail2"
+                android:id="@+id/editEmail"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:layout_weight="100"
@@ -53,7 +53,7 @@
                 android:textSize="16sp" />
 
             <TextView
-                android:id="@+id/textView"
+                android:id="@+id/btnDuplicateCheck"
                 android:layout_width="150dp"
                 android:layout_height="28dp"
                 android:layout_marginLeft="3dp"
@@ -72,7 +72,7 @@
         </LinearLayout>
 
         <EditText
-            android:id="@+id/editEmail"
+            android:id="@+id/editName"
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:layout_marginLeft="24dp"
@@ -90,7 +90,7 @@
             android:textSize="16sp" />
 
         <EditText
-            android:id="@+id/editEmail3"
+            android:id="@+id/editNickname"
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:layout_marginLeft="24dp"
@@ -108,7 +108,7 @@
             android:textSize="16sp" />
 
         <EditText
-            android:id="@+id/editEmail4"
+            android:id="@+id/editPassword"
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:layout_marginLeft="24dp"
@@ -126,7 +126,7 @@
             android:textSize="16sp" />
 
         <TextView
-            android:id="@+id/textView3"
+            android:id="@+id/txtPasswordCheck"
             android:layout_width="match_parent"
             android:layout_height="25dp"
             android:layout_marginLeft="24dp"
@@ -141,7 +141,7 @@
             android:textSize="12sp" />
 
         <EditText
-            android:id="@+id/editEmail5"
+            android:id="@+id/editPasswordCheck"
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:layout_marginLeft="24dp"
@@ -167,7 +167,7 @@
             android:orientation="horizontal">
 
             <EditText
-                android:id="@+id/editTextNumber"
+                android:id="@+id/editIdNum1"
                 android:layout_width="159dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="10"
@@ -191,7 +191,7 @@
                 android:textSize="20dp" />
 
             <EditText
-                android:id="@+id/editTextNumberPassword"
+                android:id="@+id/editIdNum2"
                 android:layout_width="159dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -207,7 +207,7 @@
         </LinearLayout>
 
         <CheckBox
-            android:id="@+id/checkBox"
+            android:id="@+id/ckbAllAgree"
             android:layout_width="wrap_content"
             android:layout_height="30dp"
             android:layout_marginLeft="24dp"
@@ -217,7 +217,7 @@
             android:text="전체동의"/>
 
         <CheckBox
-            android:id="@+id/checkBox2"
+            android:id="@+id/checkBox1"
             android:layout_width="match_parent"
             android:layout_height="30dp"
             android:layout_marginLeft="24dp"
@@ -226,13 +226,22 @@
             android:text="이용약관(필수)" />
 
         <CheckBox
-            android:id="@+id/checkBox3"
+            android:id="@+id/checkBox2"
             android:layout_width="match_parent"
             android:layout_height="30dp"
             android:layout_marginLeft="24dp"
             android:layout_marginRight="24dp"
             android:layout_weight="1"
             android:text="개인정보 수집 및 이용동의(필수)" />
+
+        <CheckBox
+            android:id="@+id/checkBox3"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_marginLeft="24dp"
+            android:layout_marginRight="24dp"
+            android:layout_weight="1"
+            android:text="만 14세 이상입니다.(필수)" />
 
         <CheckBox
             android:id="@+id/checkBox4"
@@ -241,19 +250,10 @@
             android:layout_marginLeft="24dp"
             android:layout_marginRight="24dp"
             android:layout_weight="1"
-            android:text="개인정보 수집 및 이용동의(필수)" />
-
-        <CheckBox
-            android:id="@+id/checkBox5"
-            android:layout_width="match_parent"
-            android:layout_height="30dp"
-            android:layout_marginLeft="24dp"
-            android:layout_marginRight="24dp"
-            android:layout_weight="1"
             android:text="이벤트, 쇼핑 프로모션 메일 수신 동의(선택)" />
 
         <Button
-            android:id="@+id/button2"
+            android:id="@+id/btnRegister"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="24dp"

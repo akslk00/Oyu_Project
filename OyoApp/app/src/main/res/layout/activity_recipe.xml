@@ -27,14 +27,14 @@
                 android:orientation="horizontal">
 
                 <de.hdodenhof.circleimageview.CircleImageView
-                    android:id="@+id/iv"
+                    android:id="@+id/ivProfile"
                     android:layout_width="40dp"
                     android:layout_height="40dp"
                     android:layout_alignParentRight="true"
                     android:src="@mipmap/ic_launcher" />
 
                 <TextView
-                    android:id="@+id/textView26"
+                    android:id="@+id/txtNickname"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
@@ -45,7 +45,7 @@
                     android:textSize="14sp" />
 
                 <TextView
-                    android:id="@+id/textView26"
+                    android:id="@+id/txtDate"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/pretendard_regular"
@@ -81,7 +81,7 @@
                     android:textSize="20sp" />
 
                 <TextView
-                    android:id="@+id/textView27"
+                    android:id="@+id/txtRating"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
@@ -93,7 +93,7 @@
             </LinearLayout>
 
             <ImageView
-                android:id="@+id/imageView16"
+                android:id="@+id/imageRecipe"
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
                 android:layout_marginTop="10dp"
@@ -102,7 +102,7 @@
                 app:srcCompat="@drawable/baseline_image_24" />
 
             <TextView
-                android:id="@+id/textView30"
+                android:id="@+id/txtIngredients"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
@@ -113,7 +113,7 @@
                 android:textSize="20sp" />
 
             <TextView
-                android:id="@+id/textView31"
+                android:id="@+id/txtIngredientsView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
@@ -123,7 +123,7 @@
                 android:textColor="@color/defalt_balck" />
 
             <TextView
-                android:id="@+id/textView32"
+                android:id="@+id/txtRecipe"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
@@ -134,7 +134,7 @@
                 android:textSize="20sp" />
 
             <TextView
-                android:id="@+id/textView33"
+                android:id="@+id/txtRecipeView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
@@ -144,7 +144,7 @@
                 android:textColor="@color/defalt_balck" />
 
             <TextView
-                android:id="@+id/textView34"
+                android:id="@+id/txtComment"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
@@ -155,6 +155,7 @@
                 android:textSize="20sp" />
 
             <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerView"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" />
 
@@ -172,20 +173,34 @@
             android:orientation="horizontal"
             android:padding="10dp">
 
+            <TextView
+                android:id="@+id/txtStar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="★"
+                android:textColor="#FF1010" />
+
+            <Spinner
+                android:id="@+id/spinnerComment"
+                android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/convert_spinner_star"/>
+
+
             <EditText
-                android:id="@+id/et"
+                android:id="@+id/editComment"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="10dp"
                 android:layout_weight="1"
                 android:background="@drawable/button_mini"
-                android:hint="Input coment"
+                android:hint="댓글을 입력하세요."
                 android:inputType="textMultiLine"
                 android:maxLines="3"
                 android:padding="10dp" />
 
             <ImageView
-                android:id="@+id/imageView12"
+                android:id="@+id/btnSend"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="0"

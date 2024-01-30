@@ -7,8 +7,25 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.EditText;
+import android.widget.TextView;
 
 public class AddRecipeActivity extends AppCompatActivity {
+
+    TextView txtTitle;
+    EditText editTitle;
+
+    TextView btnUploadImg;
+    TextView txtImageFile;
+
+    TextView txtIngredients;
+    EditText editIngredients;
+
+    TextView txtRecipe;
+    EditText editRecipe;
+
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,6 +35,15 @@ public class AddRecipeActivity extends AppCompatActivity {
         getSupportActionBar().setTitle("레시피 작성");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeAsUpIndicator(R.drawable.arrow_back_ios);
+
+        txtTitle = findViewById(R.id.txtTitle);
+        editTitle = findViewById(R.id.editTitle);
+        btnUploadImg = findViewById(R.id.btnUploadImg);
+        txtImageFile = findViewById(R.id.txtImageFile);
+        txtIngredients = findViewById(R.id.txtIngredients);
+        editIngredients = findViewById(R.id.editIngredients);
+        txtRecipe = findViewById(R.id.txtRecipe);
+        editRecipe = findViewById(R.id.editRecipe);
     }
 
 

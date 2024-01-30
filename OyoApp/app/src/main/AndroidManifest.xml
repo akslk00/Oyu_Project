@@ -29,7 +29,8 @@
             android:parentActivityName=".MyRecipeActivity" />
         <activity
             android:name=".RecipeActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:parentActivityName=".UserRecipeAllActivity" />
         <activity
             android:name=".UpdateRecipeActivity"
             android:exported="false"
