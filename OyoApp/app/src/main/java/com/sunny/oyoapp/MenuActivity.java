@@ -104,6 +104,9 @@ public class MenuActivity extends AppCompatActivity {
 
                 Retrofit retrofit = NetworkClient.getRetrofitClient(MenuActivity.this);
                 UserApi api = retrofit.create(UserApi.class);
+                SharedPreferences sp = getSharedPreferences(Config.PREFERENCE_NAME, MODE_PRIVATE);
+                token = sp.getString("token", "");
+
                 token = "Bearer " + token;
 
                 Call<Res> call = api.logout(token);
