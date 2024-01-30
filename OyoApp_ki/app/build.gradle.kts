@@ -12,6 +12,9 @@ android {
         targetSdk = 34
         versionCode = 1
         versionName = "1.0"
+        multiDexEnabled = true
+
+
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -52,7 +55,5 @@ dependencies {
     implementation("androidx.navigation:navigation-fragment:2.7.6")
     implementation("androidx.navigation:navigation-ui:2.7.6")
 
-    //    카카오 로그인 lib
-    implementation ("com.kakao.sdk:v2-user:2.19.0")
-    implementation ("com.github.bumptech.glide:glide:4.11.0")
+    implementation("androidx.multidex:multidex:2.0.1") //의존성 패키지 버전
 }

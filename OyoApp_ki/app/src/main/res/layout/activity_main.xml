@@ -13,12 +13,12 @@
         android:orientation="vertical">
 
         <ImageView
-            android:id="@+id/imageView"
-            android:layout_width="100dp"
+            android:id="@+id/imageLogo"
+            android:layout_width="80dp"
             android:layout_height="40dp"
             android:layout_gravity="center"
-            android:layout_marginTop="15dp"
-            android:layout_marginBottom="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="7dp"
             android:src="@drawable/oyo_logo" />
 
         <ScrollView
@@ -38,36 +38,40 @@
                     android:src="@drawable/main_bnr" />
 
                 <Button
-                    android:id="@+id/frame_8"
-                    android:layout_width="345dp"
+                    android:id="@+id/btnAi"
+                    android:layout_width="match_parent"
                     android:layout_height="59dp"
                     android:layout_alignParentTop="false"
                     android:layout_gravity="center"
+                    android:layout_marginLeft="24dp"
                     android:layout_marginTop="20dp"
+                    android:layout_marginRight="24dp"
                     android:backgroundTint="@color/main_color"
                     android:elevation="10dp"
-                    android:fontFamily="@font/pretendard_regular"
+                    android:fontFamily="@font/pretendard_bold"
                     android:letterSpacing="0.001"
                     android:text="Ai 테마별 요리 추천받기"
                     android:textAlignment="center"
-                    android:textSize="20sp"
+                    android:textSize="18sp"
                     app:cornerRadius="15dp"
                     app:icon="@drawable/smart_toy_white" />
 
                 <Button
-                    android:id="@+id/frame_9"
-                    android:layout_width="345dp"
+                    android:id="@+id/btnAi2"
+                    android:layout_width="match_parent"
                     android:layout_height="59dp"
                     android:layout_alignParentTop="false"
                     android:layout_gravity="center"
+                    android:layout_marginLeft="24dp"
                     android:layout_marginTop="5dp"
+                    android:layout_marginRight="24dp"
                     android:backgroundTint="@color/main_color2"
                     android:elevation="10dp"
-                    android:fontFamily="@font/pretendard_regular"
+                    android:fontFamily="@font/pretendard_bold"
                     android:letterSpacing="0.001"
                     android:text="Ai 냉장고 재료 레시피 찾기"
                     android:textAlignment="center"
-                    android:textSize="20sp"
+                    android:textSize="18sp"
                     app:cornerRadius="15dp"
                     app:icon="@drawable/kitchen_01" />
 
@@ -91,21 +95,21 @@
                         android:textSize="24sp" />
 
                     <TextView
-                        android:id="@+id/textMore"
+                        android:id="@+id/btnMoreRecipe"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
                         android:fontFamily="@font/pretendard_bold"
                         android:text="더보기 >"
-                        android:textAlignment="textEnd"
                         android:textColor="#111111" />
                 </LinearLayout>
 
                 <androidx.gridlayout.widget.GridLayout
+                    android:id="@+id/gridLayout"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
 
                     <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/recyclerView"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_marginLeft="24dp"
@@ -116,113 +120,119 @@
             </LinearLayout>
         </ScrollView>
 
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="79dp"
+        android:layout_alignParentBottom="true"
+        android:background="@color/white"
+        android:elevation="20dp"
+        android:orientation="horizontal"
+        android:padding="10dp">
+
         <LinearLayout
+            android:id="@+id/btnScrapAt"
             android:layout_width="match_parent"
-            android:layout_height="79dp"
-            android:elevation="25dp"
-            android:orientation="horizontal"
-            android:padding="10dp">
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:textAlignment="center">
 
-            <LinearLayout
-                android:id="@+id/btnHome"
+            <ImageView
+                android:id="@+id/imageView8"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                app:srcCompat="@drawable/home" />
+
+            <TextView
+                android:id="@+id/textView9"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:fontFamily="@font/pretendard_regular"
                 android:gravity="center"
-                android:orientation="vertical"
-                android:textAlignment="center">
+                android:text="홈" />
+        </LinearLayout>
 
-                <ImageView
-                    android:id="@+id/imageView8"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0"
-                    app:srcCompat="@drawable/home" />
+        <LinearLayout
+            android:id="@+id/btnChat"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:textAlignment="center">
 
-                <TextView
-                    android:id="@+id/textView9"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0"
-                    android:gravity="center"
-                    android:text="홈" />
-            </LinearLayout>
+            <ImageView
+                android:id="@+id/imageView9"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                app:srcCompat="@drawable/smart_toy_24px" />
 
-            <LinearLayout
-                android:id="@+id/btnChat"
+            <TextView
+                android:id="@+id/textView10"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:fontFamily="@font/pretendard_regular"
                 android:gravity="center"
-                android:orientation="vertical"
-                android:textAlignment="center">
+                android:text="챗봇검색" />
+        </LinearLayout>
 
-                <ImageView
-                    android:id="@+id/imageView9"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0"
-                    app:srcCompat="@drawable/smart_toy_24px" />
+        <LinearLayout
+            android:id="@+id/btnScrap"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:textAlignment="center">
 
-                <TextView
-                    android:id="@+id/textView10"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0"
-                    android:gravity="center"
-                    android:text="챗봇검색" />
-            </LinearLayout>
+            <ImageView
+                android:id="@+id/imageView10"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                app:srcCompat="@drawable/bookmark_24px" />
 
-            <LinearLayout
-                android:id="@+id/btnScrap"
+            <TextView
+                android:id="@+id/textView11"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:fontFamily="@font/pretendard_regular"
                 android:gravity="center"
-                android:orientation="vertical"
-                android:textAlignment="center">
+                android:text="스크랩" />
+        </LinearLayout>
 
-                <ImageView
-                    android:id="@+id/imageView10"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0"
-                    app:srcCompat="@drawable/bookmark_24px" />
+        <LinearLayout
+            android:id="@+id/btnMenu"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:textAlignment="center">
 
-                <TextView
-                    android:id="@+id/textView11"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0"
-                    android:gravity="center"
-                    android:text="스크랩" />
-            </LinearLayout>
+            <ImageView
+                android:id="@+id/imageView11"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                app:srcCompat="@drawable/menu_24px" />
 
-            <LinearLayout
-                android:id="@+id/btnMenu"
+            <TextView
+                android:id="@+id/textView12"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:fontFamily="@font/pretendard_regular"
                 android:gravity="center"
-                android:orientation="vertical"
-                android:textAlignment="center">
-
-                <ImageView
-                    android:id="@+id/imageView11"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0"
-                    app:srcCompat="@drawable/menu_24px" />
-
-                <TextView
-                    android:id="@+id/textView12"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0"
-                    android:gravity="center"
-                    android:text="더보기" />
-            </LinearLayout>
-
+                android:text="더보기" />
         </LinearLayout>
 
     </LinearLayout>

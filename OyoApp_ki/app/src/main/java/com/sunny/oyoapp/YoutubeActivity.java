@@ -12,7 +12,6 @@ public class YoutubeActivity extends AppCompatActivity {
 
     ImageView btnBack;
     EditText editSearch;
-
     ImageView btnSearch;
 
 
@@ -33,11 +32,9 @@ public class YoutubeActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(YoutubeActivity.this, MainActivity.class);
+                startActivity(intent);
             }
         });
-
-
-
 
     }
 }
