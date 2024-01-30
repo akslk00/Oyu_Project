@@ -75,15 +75,15 @@ public class MainActivity extends AppCompatActivity {
 
         // TODO:토큰 생기면 그때 진행.
 
-//        SharedPreferences sp = getSharedPreferences(Config.PREFERENCE_NAME,MODE_PRIVATE);
-//        String token = sp.getString("token","");
-//
-//        if(token.isEmpty()){
-//            Intent intent = new Intent(MainActivity.this, LoginActivity.class);
-//            startActivity(intent);
-//            finish();
-//            return;
-//        }
+        SharedPreferences sp = getSharedPreferences(Config.PREFERENCE_NAME,MODE_PRIVATE);
+        String token = sp.getString("token","");
+
+        if(token.isEmpty()){
+            Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+            startActivity(intent);
+            finish();
+            return;
+        }
 
 
     }
