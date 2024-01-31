@@ -50,7 +50,7 @@ public class MainActivity extends AppCompatActivity {
     int limit = 20;
     int count = 0;
     String token;
-    String order;
+    String order = "avgRating";
 
 
 
