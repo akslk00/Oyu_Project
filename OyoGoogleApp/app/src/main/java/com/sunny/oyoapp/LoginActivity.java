@@ -131,11 +131,11 @@ public class LoginActivity extends AppCompatActivity {
         SharedPreferences sp =
                 getSharedPreferences(Config.PREFERENCE_NAME, MODE_PRIVATE);
         SharedPreferences.Editor editor = sp.edit();
-        editor.putString("token", );
+        editor.putString("token",);
         editor.apply();
 
         Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-        intent.putExtra("", );
+        intent.putExtra("",);
         startActivity(intent);
         finish();
     }
