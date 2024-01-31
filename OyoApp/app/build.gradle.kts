@@ -56,4 +56,5 @@ dependencies {
     implementation("androidx.navigation:navigation-ui:2.7.6")
 
     implementation("androidx.multidex:multidex:2.0.1") //의존성 패키지 버전
+    implementation ("com.google.android.gms:play-services-auth:20.7.0")//구글 로그인 라이브러리
 }
