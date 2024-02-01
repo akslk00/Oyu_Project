@@ -1,3 +1,4 @@
+
 from datetime import datetime
 from flask import request
 from flask_jwt_extended import get_jwt_identity, jwt_required
@@ -67,11 +68,11 @@ class RecipeListResource(Resource) :
             #  json은 문자열이나 숫자만 가능하므로
             #  datetime을 문자열로 바꿔줘야 한다.
 
-            # i = 0
-            # for row in result_list :
-            #     result_list[i]['createdAt']= row['createdAt'].isoformat()
-            #     result_list[i]['updatedAt']= row['updatedAt'].isoformat()
-            #     i = i + 1
+            i = 0
+            for row in result_list :
+                result_list[i]['avgRating'] = float(row['avgRating'])
+            
+                i = i + 1
 
             print()
             print(result_list)
@@ -152,6 +153,7 @@ class RecipeListMoreShowResource(Resource) :
             for row in result_list :
                 result_list[i]['createdAt']= row['createdAt'].isoformat()
                 result_list[i]['updatedAt']= row['updatedAt'].isoformat()
+                result_list[i]['avgRating'] = float(row['avgRating'])
                 i = i + 1
 
             print()
@@ -251,14 +253,20 @@ class RecipeDetail(Resource) :
             connection = get_connection()
             
             query = '''select u.id, u.nickname,
-                                    p.*,
-                                    r.rating, r.content
-                                    from posting p
-                                    join user u
-                                    on u.id = p.userId
-                                    left join review r
-                                    on p.id = r.postingId
-                                    where p.id = %s; '''
+                                p.id as postingid, p.title, p.imageURL, 
+                                p.ingredients, p.recipe, p.createdAt, p.updatedAt,
+                                avg(ifnull(r.rating,0)) as avgRating,
+                                if( f.id is null  , 0 , 1 ) as isFavorite
+                                from posting p
+                                join user u
+                                on u.id = p.userId
+                                left join review r
+                                on p.id = r.postingId
+                                left join favorites f
+                                on p.id = f.postingId
+                                where p.id = %s
+                                group by p.id
+                                order by p.createdAt desc; '''
             
             recode = (posting_id , )
 
@@ -275,6 +283,7 @@ class RecipeDetail(Resource) :
             for row in result_list :
                 result_list[0]['createdAt']=row['createdAt'].isoformat()
                 result_list[0]['updatedAt']= row['updatedAt'].isoformat()
+                result_list[i]['avgRating'] = float(row['avgRating'])
                 i = i + 1
         
 
@@ -357,6 +366,7 @@ class RecipeMeResource(Resource) :
         for row in result_list :
                 result_list[i]['createdAt']= row['createdAt'].isoformat()
                 result_list[i]['updatedAt']= row['updatedAt'].isoformat()
+                result_list[i]['avgRating'] = float(row['avgRating'])
                 i = i + 1
 
 
