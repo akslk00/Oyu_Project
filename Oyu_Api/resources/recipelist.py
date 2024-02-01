@@ -35,7 +35,7 @@ class RecipeListResource(Resource) :
         try :
             connection = get_connection()
 
-            query = ''' select p.id as postingid, p.imageURL, u.nickname, p.subtitle, 
+            query = ''' select p.id as postingid, p.imageURL, u.nickname, 
                                     ifnull(r.rating,0) as avgRating,
                                     if( f.id is null  , 0 , 1 ) as isFavorite
                                     from posting p

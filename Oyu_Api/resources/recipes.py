@@ -17,7 +17,6 @@ class RecipeResource(Resource):
 
         file = request.files.get('photo')
         title = request.form.get('title')
-        subTitle = request.form.get('subTitle')
         ingredients = request.form.get('ingredients')
         recipe = request.form.get('recipe')
     
@@ -51,10 +50,10 @@ class RecipeResource(Resource):
             connection = get_connection()
 
             query = '''insert into posting
-                        (userId, title,subTitle, imageURL, ingredients,recipe)
+                        (userId, title, imageURL, ingredients,recipe)
                         values
                         (%s,%s,%s,%s,%s,%s);'''
-            record = (user_id,title,subTitle,
+            record = (user_id,title,
                       Config.S3_LOCATION+new_file_name,ingredients,recipe,
                       )
             cursor = connection.cursor()
@@ -82,7 +81,7 @@ class MyRecipeResource(Resource):
 
         file = request.files.get('photo')
         title = request.form.get('title')
-        subTitle = request.form.get('subTitle')
+        
         ingredients = request.form.get('ingredients')
         recipe = request.form.get('recipe')
 
@@ -111,13 +110,12 @@ class MyRecipeResource(Resource):
         try:
             connection = get_connection()
             query = '''update posting
-                        set title=%s,
-                            subTitle = %s,
+                        set title=%s,    
                             imageURL = %s,
                             ingredients = %s,
                             recipe = %s
                         where id=%s and userId=%s;'''
-            record =(title,subTitle,Config.S3_LOCATION+new_file_name,ingredients,recipe,Myrecipes_id,user_id)
+            record =(title,Config.S3_LOCATION+new_file_name,ingredients,recipe,Myrecipes_id,user_id)
 
             cursor = connection.cursor()
             cursor.execute(query,record)
