@@ -240,72 +240,67 @@ class UserPasswordUpdate(Resource) :
 
 class GoogleLogin(Resource):
 
-    def post(self) :
-
+    def post(self):
         data = request.get_json()
 
-        try :
+        try:
             connection = get_connection()
             query = '''select *
                         from user
                         where email = %s;'''
-                        
+
+            if 'email' not in data:
+                return {"error": "email key is missing in the request data"}, 400
+
             record = (data["email"], )
 
-            cursor = connection.cursor(dictionary= True)
+            cursor = connection.cursor(dictionary=True)
             cursor.execute(query, record)
 
             result_list = cursor.fetchall()
             print(result_list)
 
-
             cursor.close()
             connection.close()
-        
+
         except Error as e:
             print(e)
             cursor.close()
             connection.close()
-            return{"error" : str(e)}, 500
-        
-        if len(result_list) == 0 :
-            try :
-                conncetion = get_connection()
+            return {"error": str(e)}, 500
+
+        if len(result_list) == 0:
+            try:
+                connection = get_connection()
                 query = '''insert into user
-                        ( email, password, nickname, age, username)
+                        (type, email, nickname, profileUrl, username)
                         values
-                        (%s,%s,%s,%s);'''
-                record = (data['email'],
-                        data['nickname'],
-                        data['age'],
-                        data['username'])
-                
-                cursor = conncetion.cursor()
+                        (%s, %s, %s, %s, %s);'''
+                record = (1, data['email'], data['displayName'], data['photoUrl'], data['displayName'])
+
+                cursor = connection.cursor()
                 cursor.execute(query, record)
-                conncetion.commit()
+                connection.commit()
 
                 user_id = cursor.lastrowid
 
                 cursor.close()
-                conncetion.close()
-        
-            except Error as e :
+                connection.close()
+
+            except Error as e:
                 print(e)
                 # cursor.close()
-                # conncetion.close()
-                return {'error' : str(e)}, 500
-        
+                # connection.close()
+                return {'error': str(e)}, 500
+
             access_token = create_access_token(user_id)
 
-            return {'result' : 'success',
-                    'access_token' : access_token}, 200
-        
-        if len(result_list) != 0 :
+            return {'result': 'success', 'access_token': access_token}, 200
 
+        if len(result_list) != 0:
             access_token = create_access_token(result_list[0]['id'])
-            
-            return{"result" : "success",
-               "access_token" : access_token}, 200
+
+            return {"result": "success", "access_token": access_token}, 200
         
 
 
