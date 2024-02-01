@@ -36,7 +36,7 @@ class RecipeListResource(Resource) :
             connection = get_connection()
 
             query = ''' select p.id as postingid, p.imageURL, u.nickname, 
-                                    ifnull(r.rating,0) as avgRating,
+                                    avg(ifnull(r.rating,0)) as avgRating,
                                     if( f.id is null  , 0 , 1 ) as isFavorite
                                     from posting p
                                     join user u
@@ -117,7 +117,7 @@ class RecipeListMoreShowResource(Resource) :
 
             query = ''' select p.id as postingid, p.imageURL, p.title, u.nickname,
                                     p.createdAt,p.updatedAt,
-                                    ifnull(r.rating,0) as avgRating,
+                                    avg(ifnull(r.rating,0)) as avgRating,
                                     if( f.id is null  , 0 , 1 ) as isFavorite
                                     from posting p
                                     join user u
@@ -321,7 +321,7 @@ class RecipeMeResource(Resource) :
             connection = get_connection()
             query = ''' select p.id as postingid, p.imageURL, p.title, u.nickname,
                                     p.createdAt,p.updatedAt,
-                                    ifnull(r.rating,0) as avgRating,
+                                    avg(ifnull(r.rating,0)) as avgRating,
                                     if( f.id is null  , 0 , 1 ) as isFavorite
                                     from posting p
                                     join user u
