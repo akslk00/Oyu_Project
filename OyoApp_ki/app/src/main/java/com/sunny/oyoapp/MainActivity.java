@@ -9,6 +9,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
@@ -50,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
     int limit = 20;
     int count = 0;
     String token;
-    String order = "avgRating";
+    String order;
 
 
 
@@ -189,7 +190,7 @@ public class MainActivity extends AppCompatActivity {
         String token = sp.getString("token", "");
         token = "Bearer " + token;
 
-        Call<RecipeList> call = api.getMainRecipe(token, order, offset, limit);
+        Call<RecipeList> call = api.getMainRecipe(token, "avgRating" ,offset, limit);
 
         call.enqueue(new Callback<RecipeList>() {
             @Override
@@ -202,9 +203,12 @@ public class MainActivity extends AppCompatActivity {
 
                     count = recipeList.count;
 
+                    postingArrayList.clear();
                     postingArrayList.addAll( recipeList.items );
 
                     adapter.notifyDataSetChanged();
+
+
 
 
                 }else{
@@ -214,6 +218,7 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<RecipeList> call, Throwable t) {
+
 
             }
         });
@@ -228,6 +233,7 @@ public class MainActivity extends AppCompatActivity {
         count = 0;
 
 
+
         // 네트워크로 API 호출한다.
         Retrofit retrofit = NetworkClient.getRetrofitClient(MainActivity.this);
 
@@ -237,7 +243,7 @@ public class MainActivity extends AppCompatActivity {
         token = sp.getString("token", "");
         token = "Bearer " + token;
 
-        Call<RecipeList> call = api.getMainRecipe(token, order,offset, limit);
+        Call<RecipeList> call = api.getMainRecipe(token,"p.createdAt", offset, limit);
 
         call.enqueue(new Callback<RecipeList>() {
             @Override
@@ -266,6 +272,7 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<RecipeList> call, Throwable t) {
+                Log.e("NetworkError", "Network request failed", t);
 
 
             }

@@ -20,7 +20,7 @@ public class NetworkClient {
             // 통신 로그 확인할때 필요한 코드
             HttpLoggingInterceptor loggingInterceptor =
                     new HttpLoggingInterceptor();
-            loggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BASIC); // 이 부분만 변경 ★
+            loggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY); // 이 부분만 변경 ★
 
             // 네트워크 연결관련 코드
             OkHttpClient httpClient = new OkHttpClient.Builder()

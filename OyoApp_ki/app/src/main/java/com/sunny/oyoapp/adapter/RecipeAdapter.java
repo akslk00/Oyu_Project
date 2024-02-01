@@ -38,6 +38,10 @@ public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.ViewHolder
     SimpleDateFormat sf;
     SimpleDateFormat df;
 
+
+
+
+
     public RecipeAdapter(Context context, ArrayList<Posting> postingArrayList) {
         this.context = context;
         this.postingArrayList = postingArrayList;
@@ -60,126 +64,43 @@ public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.ViewHolder
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Posting posting = postingArrayList.get(position);
 
+        // Glide를 사용하여 이미지 설정
         Glide.with(context).load(posting.imageURL).into(holder.thumbRecipe);
 
+        // 닉네임 설정
+        holder.txtNickname.setText(posting.nickname);
 
-
-        holder.txtNickname.setText( posting.nickname );
+        // 레시피 내용 설정
         holder.txtRecipeView.setText(posting.subTitle);
-
-
-        // 서버의 시간(글로벌 표준시)을, 로컬의 시간으로 변환해야 한다.
-
-//        try {
-//            Date date = sf.parse( posting.createdAt );
-//            String localTime = df.format(date);
-//            holder.txtCreatedAt.setTextDirection(localTime);
-//
-//        } catch (ParseException e) {
-//            throw new RuntimeException(e);
-//        }
-
-        // 좋아요 처리
-//        if( posting.isLike == 1){
-//            holder.imgLike.setImageResource(R.drawable.baseline_thumb_up_blue_24);
-//        }else {
-//            holder.imgLike.setImageResource(R.drawable.outline_thumb_up_24);
-//        }
-
     }
 
     @Override
     public int getItemCount() {
+        // 아이템 수 반환
         return postingArrayList.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder{
+    public class ViewHolder extends RecyclerView.ViewHolder {
 
-
+        // ViewHolder 내부 뷰들 설정
         ImageView thumbRecipe;
         ImageView imageView6;
         TextView txtNickname;
-        Button btnScrap;
+        ImageView btnScrap;
         TextView txtRecipeView;
         Posting posting;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
+            // ViewHolder 내부 뷰들 초기화
             thumbRecipe = itemView.findViewById(R.id.thumbRecipe);
             imageView6 = itemView.findViewById(R.id.imageView6);
             txtNickname = itemView.findViewById(R.id.txtNickname);
             btnScrap = itemView.findViewById(R.id.btnScrap);
             txtRecipeView = itemView.findViewById(R.id.txtRecipeView);
 
-//            btnScrap.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View view) {
-//
-//                    // 1. 어떤 포스팅을 좋아요 눌렀는지 확인.
-//                    int index = getAdapterPosition();
-//
-//                    posting = postingArrayList.get(index);
-//
-//                    // 2. 해당 포스팅의 좋아요가 어떤 상태인지 확인후
-//                    //    좋아요가 되어있으면, 좋아요 해제
-//                    //    그렇지 않으면, 좋아요 실행.
-//
-//                    Retrofit retrofit = NetworkClient.getRetrofitClient(context);
-//
-//                    LikeApi api = retrofit.create(LikeApi.class);
-//
-//                    SharedPreferences sp = context.getSharedPreferences(Config.PREFERENCE_NAME, Context.MODE_PRIVATE);
-//                    String token = sp.getString("token", "");
-//                    token = "Bearer " + token;
-//
-//                    if(posting.isLike == 0){
-//                        // 좋아요 API
-//                        Call<Res> call = api.setLike(posting.postId, token);
-//                        call.enqueue(new Callback<Res>() {
-//                            @Override
-//                            public void onResponse(Call<Res> call, Response<Res> response) {
-//                                if(response.isSuccessful()){
-//
-//                                    posting.isLike = 1;
-//                                    notifyDataSetChanged();
-//
-//                                }else{
-//
-//                                }
-//                            }
-//
-//                            @Override
-//                            public void onFailure(Call<Res> call, Throwable t) {
-//
-//                            }
-//                        });
-//                    }else{
-//                        // 좋아요 해지 API
-//                        Call<Res> call = api.deleteLike(posting.postId, token);
-//                        call.enqueue(new Callback<Res>() {
-//                            @Override
-//                            public void onResponse(Call<Res> call, Response<Res> response) {
-//                                if(response.isSuccessful()){
-//
-//                                    posting.isLike = 0;
-//                                    notifyDataSetChanged();
-//
-//                                }else{
-//
-//                                }
-//                            }
-//
-//                            @Override
-//                            public void onFailure(Call<Res> call, Throwable t) {
-//
-//                            }
-//                        });
-//                    }
-//
-//                }
-//            });
-
         }
     }
 }
+

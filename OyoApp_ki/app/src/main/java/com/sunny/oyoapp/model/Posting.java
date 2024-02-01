@@ -13,6 +13,9 @@ public class Posting {
     public String nickname;
     public String favorites;
 
+    public int postingid;
+    public int avgRating;
+    public int isFavorite;
 
 }
 
